@@ -4,6 +4,7 @@ import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-material.css';
 import { TextField } from '@mui/material';
 import { parseJSON } from 'date-fns';
+import Deletetraining from './Deletetraining';
 
 export default function Traininglist() {
     const [trainings, setTrainings] = useState([]);
@@ -13,9 +14,16 @@ export default function Traininglist() {
     useEffect(() => fetchData(), []);
 
     const fetchData = () => {
-        fetch('https://customerrest.herokuapp.com/api/trainings')
+        fetch('https://customerrest.herokuapp.com/gettrainings')
         .then(response => response.json())
-        .then(data => setTrainings(data.content))
+        .then(data => setTrainings(data))
+        .catch(error => console.error(error))
+    }
+
+    const deleteTraining = (trainingId) => {
+        let url = "https://customerrest.herokuapp.com/api/trainings/"+trainingId;
+        fetch(url, {method: 'DELETE'})
+        .then(res => fetchData())
         .catch(error => console.error(error))
     }
 
@@ -34,9 +42,16 @@ export default function Traininglist() {
     }
 
     const columns = [
+        {headerName: "Delete", width:130,
+        cellRendererFramework: params => {
+            return (<Deletetraining deleteTraining={deleteTraining} trainingId={params.data.id}/>)}
+        },
+        {headerName: "Activity", field:"activity"},
         {headerName: "Date", field:"date", valueFormatter: dateFormat},
-        {headerName: "Duration", field:"duration"},
-        {headerName: "Activity", field:"activity"}
+        {headerName: "Duration (min)", field:"duration"},
+        {headerName: "Customer", valueGetter: function fullName(params){
+            return (params.data.customer.firstname + " " + params.data.customer.lastname)
+        }}
     ]
 
     return (

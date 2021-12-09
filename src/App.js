@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './App.css';
 import Customerlist from './components/Customerlist';
-import { Toolbar, AppBar, Typography, Tabs, Tab } from '@mui/material';
+import { AppBar, Tabs, Tab } from '@mui/material';
 import Traininglist from './components/Traininglist';
 
 function App() {
@@ -13,12 +13,14 @@ function App() {
 
   return (
     <div className="App">
+      <AppBar position="static" style={{ background: '#ffffff' }}>
         <Tabs value={value} onChange={handleChange}>
           <Tab value="customerList" label="Customers" />
           <Tab value="trainingList" label="Trainings" />
         </Tabs>
         {value === 'customerList' && <Customerlist />}
         {value === 'trainingList' && <Traininglist />}
+      </AppBar>
     </div>
   );
 }

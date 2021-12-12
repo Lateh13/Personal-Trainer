@@ -33,7 +33,8 @@ export default function Traininglist() {
     }
 
     const dataSearch = (event) => { 
-        setSearch(event.target.value)
+        const lowerCase = event.target.value.toLowerCase()
+        setSearch(lowerCase)
     }
 
     const defaultColumns = {

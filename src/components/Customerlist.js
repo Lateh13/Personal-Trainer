@@ -72,7 +72,6 @@ export default function Customerlist() {
     const dataSearch = (event) => { 
         const lowerCase = event.target.value.toLowerCase()
         setSearch(lowerCase)
-        console.log(lowerCase)
     }
 
     const defaultColumns = {

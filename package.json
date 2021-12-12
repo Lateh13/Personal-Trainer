@@ -24,6 +24,10 @@
     "recharts": "^2.1.6",
     "web-vitals": "^1.0.1"
   },
+
+  "engines": {
+    "node": "16.x"
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",

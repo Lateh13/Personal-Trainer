@@ -1,4 +1,6 @@
+import { IconButton } from "@material-ui/core";
 import { Dialog, DialogTitle, Button, DialogActions } from "@mui/material";
+import DeleteIcon from '@mui/icons-material/Delete';
 import React from "react";
 
 export default function Deletetraining(props) {
@@ -19,7 +21,7 @@ export default function Deletetraining(props) {
 
     return (
         <div>
-            <Button size="small" color="error" onClick={handleClickOpen}>Delete</Button>
+            <IconButton aria-label="delete" onClick={handleClickOpen}><DeleteIcon /></IconButton>
             <Dialog 
                 open={open} 
                 onClose={handleClose}

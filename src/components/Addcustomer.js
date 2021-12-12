@@ -1,5 +1,7 @@
 import React from "react";
 import { Button, TextField, Dialog, DialogTitle, DialogContent, DialogActions } from "@mui/material";
+import AddIcon from '@mui/icons-material/Add';
+import { IconButton } from "@material-ui/core";
 
 export default function Addcustomer(props) {
     const [open, setOpen] = React.useState(false);
@@ -26,7 +28,7 @@ export default function Addcustomer(props) {
 
     return (
         <div>
-            <Button style={{margin: 10}} variant="outlined" color="primary" onClick={handleClickOpen}>Add Customer</Button>
+            <IconButton size="small" onClick={handleClickOpen}><AddIcon /></IconButton>
             <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
                 <DialogTitle id="form-dialog-title">New Customer</DialogTitle>
                 <DialogContent>

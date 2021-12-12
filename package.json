@@ -1,6 +1,7 @@
 {
   "name": "lopputyo",
   "version": "0.1.0",
+  "type": "module",
   "private": true,
   "dependencies": {
     "@devexpress/dx-react-core": "^2.7.6",
